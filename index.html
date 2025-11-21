@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supah - The K-Convenience Store</title>
+    <title>Supah - Korean Mobile Convenience Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,112 +13,334 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-red: #FF4757;
+            --primary-blue: #3742FA;
+            --yellow: #FFD93D;
+            --dark: #1A1A1A;
+            --white: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: white;
-            color: #000;
-            line-height: 1.4;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="30" fill="white" fill-opacity="0.03">🍜</text><text x="30" y="30" font-size="25" fill="white" fill-opacity="0.03">🥤</text><text x="60" y="70" font-size="25" fill="white" fill-opacity="0.03">🥣</text><text x="80" y="40" font-size="20" fill="white" fill-opacity="0.03">🍡</text></svg>');
+            background-size: 200px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 40px auto;
-            display: block;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 6rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            letter-spacing: 0.1em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .tagline {
-            font-size: 24px;
-            font-style: italic;
-            color: #000;
-            margin-bottom: 80px;
-            font-weight: normal;
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .contact-info {
-            font-size: 24px;
-            color: #000;
-            margin-bottom: 60px;
-            line-height: 1.7;
+        .sub-tagline {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
         }
 
-        .contact-info p {
-            margin-bottom: 8px;
-            font-style: italic;
-            font-weight: normal;
+        .emoji-row {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        .footer {
-            font-size: 24px;
-            color: #000;
-            font-weight: normal;
+        .emoji-row span {
+            display: inline-block;
+            margin: 0 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
         }
 
+        .emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+        .emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Instagram CTA */
+        .instagram-cta {
+            margin-bottom: 3rem;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .instagram-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Email Signup */
+        .email-signup {
+            background: rgba(255,255,255,0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .email-signup h2 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .email-signup p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        #sender_embed_signup {
+            width: 100%;
+        }
+
+        .sender-field-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #sender-email {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #sender-email:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        #sender-subscribe {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #sender-subscribe:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .location-info {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .location-info i {
+            color: var(--yellow);
+            margin-right: 0.5rem;
+        }
+
+        .location-info a:hover {
+            text-decoration: underline !important;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
-            }
-            
             .logo {
-                width: 300px;
+                font-size: 4rem;
             }
             
             .tagline {
-                font-size: 20px;
-                margin-bottom: 60px;
+                font-size: 1.1rem;
             }
             
-            .contact-info {
-                font-size: 20px;
-                margin-bottom: 40px;
+            .sub-tagline {
+                font-size: 0.9rem;
             }
             
-            .footer {
-                font-size: 20px;
+            .emoji-row {
+                font-size: 2rem;
+            }
+            
+            .email-signup {
+                padding: 1.5rem;
+            }
+            
+            .sender-field-group {
+                flex-direction: column;
+            }
+            
+            #sender-email {
+                width: 100%;
             }
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                width: 250px;
-            }
-            
-            .tagline {
-                font-size: 18px;
-            }
-            
-            .contact-info {
-                font-size: 18px;
-            }
-            
-            .footer {
-                font-size: 18px;
-            }
+        /* Hidden elements */
+        #sender-responses, .response {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.svg" alt="Supah Logo" class="logo">
-        
-        <p class="tagline">The K-Convenience Store</p>
-        
-        <div class="contact-info">
-            <p>IG: @supah.store</p>
-            <p>Facebook:</p>
-            <p>Email: hi@supah.me</p>
-            <p>Web: supah.me</p>
+    <section class="hero">
+        <div class="container">
+            <h1 class="logo">SUPAH</h1>
+            <p class="tagline">Korean Mobile Convenience Store</p>
+            <p class="sub-tagline">Bringing authentic K-convenience to you!</p>
+            
+            <div class="emoji-row">
+                <span>🍜</span>
+                <span>🥤</span>
+                <span>🍿</span>
+            </div>
+
+            <div class="instagram-cta">
+                <a href="https://www.instagram.com/supah.store" class="instagram-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                    Follow us on Instagram
+                </a>
+            </div>
+
+            <div class="email-signup">
+                <h2>🎉 Get Exclusive Updates!</h2>
+                <p>Be the first to know about pop-up locations, new snacks, and special offers</p>
+                
+                <!-- Sender.net Signup Form -->
+                <div id="sender_embed_signup">
+                    <form action="https://stats.sender.net/forms/bo20mN/view" method="post" id="sender-subscribe-form" name="sender-subscribe-form" class="validate" target="_blank">
+                        <div id="sender_embed_signup_scroll">
+                            <div class="sender-field-group">
+                                <input type="email" value="" name="email" class="required email" id="sender-email" placeholder="Enter your email" required>
+                                <input type="submit" value="Join the Supah Squad!" name="subscribe" id="sender-subscribe" class="button">
+                            </div>
+                            <div id="sender-responses" class="clear">
+                                <div class="response" id="sender-error-response"></div>
+                                <div class="response" id="sender-success-response"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="location-info">
+                <p><i class="fas fa-map-marker-alt"></i> Find us around the Bay Area</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Ramen • Snacks • Beverages</p>
+                <p style="margin-top: 1rem;">
+                    <a href="mailto:hi@supah.me" style="color: var(--white); text-decoration: none; font-weight: 500;">
+                        <i class="fas fa-envelope"></i> hi@supah.me
+                    </a>
+                </p>
+            </div>
         </div>
-        
-        <p class="footer">© 2025 Supah LLC. All rights reserved.</p>
-    </div>
+    </section>
+
+    <script>
+        // Add smooth animations on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.email-signup, .instagram-cta');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                    }
+                });
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Add fadeInUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

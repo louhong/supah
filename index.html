@@ -247,13 +247,85 @@
             #sender-email {
                 width: 100%;
             }
+
+            .sender-form-field form {
+                flex-direction: column;
+            }
+            
+            .sender-form-field input[type="email"] {
+                width: 100%;
+            }
         }
 
         /* Hidden elements */
         #sender-responses, .response {
             display: none;
         }
+
+        /* Sender.net form styling */
+        .sender-form-field {
+            width: 100%;
+        }
+
+        .sender-form-field form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .sender-form-field input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sender-form-field input[type="email"]:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        .sender-form-field button,
+        .sender-form-field input[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sender-form-field button:hover,
+        .sender-form-field input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
     </style>
+    
+    <!-- Sender.net Script -->
+    <script>
+      (function (s, e, n, d, er) {
+        s['Sender'] = er;
+        s[er] = s[er] || function () {
+          (s[er].q = s[er].q || []).push(arguments)
+        }, s[er].l = 1 * new Date();
+        var a = e.createElement(n),
+            m = e.getElementsByTagName(n)[0];
+        a.async = 1;
+        a.src = d;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+      sender('58e4e118ba4305')
+    </script>
 </head>
 <body>
     <section class="hero">
@@ -280,20 +352,7 @@
                 <p>Be the first to know about pop-up locations, new snacks, and special offers</p>
                 
                 <!-- Sender.net Signup Form -->
-                <div id="sender_embed_signup">
-                    <form action="https://stats.sender.net/forms/bo20mN/view" method="post" id="sender-subscribe-form" name="sender-subscribe-form" class="validate" target="_blank">
-                        <div id="sender_embed_signup_scroll">
-                            <div class="sender-field-group">
-                                <input type="email" value="" name="email" class="required email" id="sender-email" placeholder="Enter your email" required>
-                                <input type="submit" value="Join the Supah Squad!" name="subscribe" id="sender-subscribe" class="button">
-                            </div>
-                            <div id="sender-responses" class="clear">
-                                <div class="response" id="sender-error-response"></div>
-                                <div class="response" id="sender-success-response"></div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <div class="sender-form-field" data-sender-form-id="mi9fwk49bo20mn8keia"></div>
             </div>
 
             <div class="location-info">
